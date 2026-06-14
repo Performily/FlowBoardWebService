@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "TSy/iEu244Y=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Oscar\\Documents\\GitHub\\FlowBoardWebService\\FlowboardAPI\\FlowboardAPI.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Oscar\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.6\\microsoft.aspnetcore.openapi.10.0.6.nupkg.sha512",
+    "C:\\Users\\Oscar\\.nuget\\packages\\microsoft.openapi\\2.0.0\\microsoft.openapi.2.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

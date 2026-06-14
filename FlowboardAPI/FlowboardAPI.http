@@ -1,0 +1,6 @@
+@FlowboardAPI_HostAddress = http://localhost:5113
+
+GET {{FlowboardAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
