@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FlowboardAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+165137d0c60e9ad7025ec1934085614e765bbae1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+75c14ba99dba6cda6c939d36f32c9040d7b166a3")]
 [assembly: System.Reflection.AssemblyProductAttribute("FlowboardAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FlowboardAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
