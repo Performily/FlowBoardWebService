@@ -1,5 +1,5 @@
 using FlowboardAPI.Shared.Resources.Errors;
-using FlowboardAPI.Shared.Resources.Shared;
+using FlowboardAPI.Shared.Resources;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 

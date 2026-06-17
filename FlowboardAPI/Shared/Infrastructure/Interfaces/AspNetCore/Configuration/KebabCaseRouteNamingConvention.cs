@@ -19,7 +19,7 @@ public class KebabCaseRouteNamingConvention : IControllerModelConvention
         return selector.AttributeRouteModel != null
             ? new AttributeRouteModel
             {
-                Template = selector.AttributeRouteModel.Template?.Replace("[controller]", name.ToKebabCase())
+                Template = selector.AttributeRouteModel.Template?.Replace("[controller]", StringExtensions.ToKebabCase(name))
             }
             : null;
     }
