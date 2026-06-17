@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
-using Performily.IAM.Iam.Application.Services;
-using Performily.IAM.Iam.Interfaces.REST.Resources;
-using Performily.IAM.Iam.Interfaces.REST.Transform;
-using Performily.IAM.Iam.Application.Errors;
+using FlowboardAPI.Iam.Application.Services;
+using FlowboardAPI.Iam.Interfaces.REST.Resources;
+using FlowboardAPI.Iam.Interfaces.REST.Transform;
+using FlowboardAPI.Iam.Application.Errors;
 
-namespace Performily.IAM.Iam.Interfaces.REST.Controllers;
+namespace FlowboardAPI.Iam.Interfaces.REST.Controllers;
 
 [ApiController]
 [Route("api/v1/auth")]

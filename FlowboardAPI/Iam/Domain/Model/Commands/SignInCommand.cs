@@ -1,6 +1,6 @@
-﻿using Performily.IAM.Iam.Domain.Model.ValueObjects;
+﻿using FlowboardAPI.Iam.Domain.Model.ValueObjects;
 
-namespace Performily.IAM.Iam.Domain.Model.Commands;
+namespace FlowboardAPI.Iam.Domain.Model.Commands;
 
 public record SignInCommand(EmailAddress Email, string Password);
 public record ForgotPasswordCommand(EmailAddress Email);

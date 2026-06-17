@@ -1,11 +1,11 @@
-﻿using Performily.IAM.Iam.Application.Errors;
-using Performily.IAM.Iam.Application.Services;
-using Performily.IAM.Iam.Application.OutboundServices;
-using Performily.IAM.Iam.Domain.Model.Aggregates;
-using Performily.IAM.Iam.Domain.Model.Commands;
-using Performily.IAM.Shared.Application.Patterns;
+﻿using FlowboardAPI.Iam.Application.Errors;
+using FlowboardAPI.Iam.Application.Services;
+using FlowboardAPI.Iam.Application.OutboundServices;
+using FlowboardAPI.Iam.Domain.Model.Aggregates;
+using FlowboardAPI.Iam.Domain.Model.Commands;
+using FlowboardAPI.Shared.Application.Patterns;
 
-namespace Performily.IAM.Iam.Application.Internal.CommandServices;
+namespace FlowboardAPI.Iam.Application.Internal.CommandServices;
 
 public class AuthenticationCommandService : IAuthenticationCommandService
 {

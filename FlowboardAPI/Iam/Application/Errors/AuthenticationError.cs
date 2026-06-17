@@ -1,4 +1,4 @@
-﻿namespace Performily.IAM.Iam.Application.Errors;
+﻿namespace FlowboardAPI.Iam.Application.Errors;
 
 public enum AuthenticationError
 {

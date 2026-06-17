@@ -1,6 +1,6 @@
-﻿using Performily.IAM.Iam.Domain.Model.Aggregates;
+﻿using FlowboardAPI.Iam.Domain.Model.Aggregates;
 
-namespace Performily.IAM.Iam.Application.OutboundServices;
+namespace FlowboardAPI.Iam.Application.OutboundServices;
 
 public interface ITokenService
 {

@@ -1,8 +1,8 @@
-﻿using Performily.IAM.Iam.Domain.Model.Commands;
-using Performily.IAM.Iam.Domain.Model.ValueObjects;
-using Performily.IAM.Iam.Interfaces.REST.Resources;
+﻿using FlowboardAPI.Iam.Domain.Model.Commands;
+using FlowboardAPI.Iam.Domain.Model.ValueObjects;
+using FlowboardAPI.Iam.Interfaces.REST.Resources;
 
-namespace Performily.IAM.Iam.Interfaces.REST.Transform;
+namespace FlowboardAPI.Iam.Interfaces.REST.Transform;
 
 public static class SignInCommandFromResourceAssembler
 {

@@ -1,6 +1,6 @@
-﻿using Performily.IAM.Iam.Domain.Model.ValueObjects;
+﻿using FlowboardAPI.Iam.Domain.Model.ValueObjects;
 
-namespace Performily.IAM.Iam.Domain.Model.Aggregates;
+namespace FlowboardAPI.Iam.Domain.Model.Aggregates;
 
 public class User
 {

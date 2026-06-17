@@ -2,10 +2,10 @@
 using System.Security.Claims;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
-using Performily.IAM.Iam.Domain.Model.Aggregates;
-using Performily.IAM.Iam.Application.OutboundServices;
+using FlowboardAPI.Iam.Domain.Model.Aggregates;
+using FlowboardAPI.Iam.Application.OutboundServices;
 
-namespace Performily.IAM.Iam.Infrastructure.Tokens;
+namespace FlowboardAPI.Iam.Infrastructure.Tokens;
 
 public class TokenService : ITokenService
 {

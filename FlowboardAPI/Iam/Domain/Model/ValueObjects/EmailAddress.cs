@@ -1,5 +1,4 @@
-﻿namespace Performily.IAM.Iam.Domain.Model.ValueObjects;
-
+﻿namespace FlowboardAPI.Iam.Domain.model.ValueObjects;
 public record EmailAddress
 {
     public string Value { get; }

@@ -1,7 +1,7 @@
-﻿using Performily.IAM.Iam.Domain.Model.Aggregates;
-using Performily.IAM.Iam.Interfaces.REST.Resources;
+﻿using FlowboardAPI.Iam.Domain.Model.Aggregates;
+using FlowboardAPI.Iam.Interfaces.REST.Resources;
 
-namespace Performily.IAM.Iam.Interfaces.REST.Transform;
+namespace FlowboardAPI.Iam.Interfaces.REST.Transform;
 
 public static class AuthenticatedUserResourceFromEntityAssembler
 {

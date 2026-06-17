@@ -1,4 +1,4 @@
-﻿namespace Performily.IAM.Iam.Interfaces.REST.Resources;
+﻿namespace FlowboardAPI.Iam.Interfaces.REST.Resources;
 
 public record SignInResource(string Email, string Password);
 
