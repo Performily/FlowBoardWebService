@@ -1,4 +1,4 @@
-using FlowboardAPI.Shared.Infrastructure.Configuration;
+using FlowboardAPI.Shared.Infrastructure.Persistence.EntityFrameworkCore.Configuration;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
