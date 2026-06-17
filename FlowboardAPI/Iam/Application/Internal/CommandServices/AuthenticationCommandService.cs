@@ -1,36 +1,38 @@
-﻿using FlowboardAPI.Iam.Application.Errors;
-using FlowboardAPI.Iam.Application.Services;
+﻿using FlowboardAPI.Iam.Application.CommandServices; // Ajustado a la estructura nueva
 using FlowboardAPI.Iam.Application.OutboundServices;
-using FlowboardAPI.Iam.Domain.Model.Aggregates;
-using FlowboardAPI.Iam.Domain.Model.Commands;
-using FlowboardAPI.Shared.Application.Patterns;
+using FlowboardAPI.Iam.Domain.model.Aggregates;
+using FlowboardAPI.Iam.Domain.model.Commands;
+using FlowboardAPI.Iam.Domain.model.Errors;
+using FlowboardAPI.Shared.Application.Model; // El Shared oficial del equipo
 
 namespace FlowboardAPI.Iam.Application.Internal.CommandServices;
 
 public class AuthenticationCommandService : IAuthenticationCommandService
 {
     private readonly ITokenService _tokenService;
-    // Aquí inyectarías tu IUserRepository cuando esté listo de la base de datos
 
     public AuthenticationCommandService(ITokenService tokenService)
     {
         _tokenService = tokenService;
     }
 
-    public async Task<Result<(User User, string Token), AuthenticationError>> Handle(SignInCommand command)
+    // Retorna el Result<T> del equipo envolviendo la Tupla del usuario y el token
+    public async Task<Result<(User User, string Token)>> Handle(SignInCommand command)
     {
-        // MOCK TEMPORAL REAL: Validamos las credenciales igual que tu Front
-        if (command.Email.Value == "admin@performily.com" && command.Password == "password123")
+        // Limpiamos espacios y minúsculas para asegurar coincidencia perfecta con el Front
+        if (command.Email.Value.Trim().ToLower() == "admin@performily.com" && command.Password == "password123")
         {
-            // Creamos la instancia de Dominio
             var user = new User("Administrador", command.Email, "hashed_password", "RRHH");
-            
-            // Generamos el JWT usando la librería de Microsoft
             var token = _tokenService.GenerateToken(user);
 
-            return new Result<(User User, string Token), AuthenticationError>.Success((user, token));
+            // Estilo del equipo: Retorna Success pasando el valor
+            return Result<(User User, string Token)>.Success((user, token));
         }
 
-        return new Result<(User User, string Token), AuthenticationError>.Failure(AuthenticationError.InvalidCredentials);
+        // Estilo del equipo: Retorna Failure pasando el Enum de error y un mensaje descriptivo
+        return Result<(User User, string Token)>.Failure(
+            AuthenticationErrors.InvalidCredentials, 
+            "Correo o contraseña incorrectos."
+        );
     }
 }

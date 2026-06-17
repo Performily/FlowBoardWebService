@@ -1,11 +1,10 @@
-﻿using FlowboardAPI.Iam.Application.Errors;
-using FlowboardAPI.Iam.Domain.Model.Aggregates;
-using FlowboardAPI.Iam.Domain.Model.Commands;
-using FlowboardAPI.Shared.Application.Patterns;
+﻿using FlowboardAPI.Iam.Domain.model.Commands;
+using FlowboardAPI.Iam.Domain.model.Aggregates;
+using FlowboardAPI.Shared.Application.Model;
 
-namespace FlowboardAPI.Iam.Application.Services;
+namespace FlowboardAPI.Iam.Application.CommandServices;
 
 public interface IAuthenticationCommandService
 {
-    Task<Result<(User User, string Token), AuthenticationError>> Handle(SignInCommand command);
+    Task<Result<(User User, string Token)>> Handle(SignInCommand command);
 }
