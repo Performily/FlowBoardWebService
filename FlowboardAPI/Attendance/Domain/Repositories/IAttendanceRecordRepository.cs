@@ -1,5 +1,5 @@
 using FlowboardAPI.Attendance.Domain.Model.Aggregates;
-using FlowboardAPI.Shared.Domain.Model.Repositories;
+using FlowboardAPI.Shared.Domain.Repositories;
 
 namespace FlowboardAPI.Attendance.Domain.Repositories;
 

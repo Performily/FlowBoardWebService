@@ -1,4 +1,4 @@
-﻿using FlowboardAPI.Shared.Domain.Model;
+﻿using FlowboardAPI.Shared.Domain.Model.Entities;
 namespace FlowboardAPI.Attendance.Domain.Model.Aggregates;
 
 public partial class AttendanceRecord : IAuditableEntity

@@ -1,3 +1,4 @@
+// --- IMPORTACIONES BASE Y SHARED ---
 using FlowboardAPI.Shared.Infrastructure.Interfaces.AspNetCore.Configuration;
 using FlowboardAPI.Shared.Infrastructure.Persistence.EntityFrameworkCore.Configuration;
 using FlowboardAPI.Shared.Infrastructure.Pipeline.Middleware.Extensions;
@@ -9,6 +10,25 @@ using Microsoft.Extensions.Localization;
 using Microsoft.OpenApi; 
 
 using ProblemDetailsFactory = FlowboardAPI.Shared.Interfaces.Rest.ProblemDetails.ProblemDetailsFactory;
+
+using FlowboardAPI.Shared.Domain.Repositories;
+using FlowboardAPI.Shared.Infrastructure.Persistence.EntityFrameworkCore.Repositories;
+
+
+// BOUNDED CONTEXTS 
+// Agreguen aquí los "using" de sus respectivos módulos:
+// =========================================================================
+
+// --- Módulo: Asistencia (Attendance) ---
+using FlowboardAPI.Attendance.Domain.Repositories;
+using FlowboardAPI.Attendance.Infrastructure.Persistence.EntityFrameworkCore.Repositories;
+using FlowboardAPI.Attendance.Application.CommandServices;
+using FlowboardAPI.Attendance.Application.Internal.CommandServices;
+using FlowboardAPI.Attendance.Application.QueryServices;
+using FlowboardAPI.Attendance.Application.Internal.QueryServices;
+
+// --- Módulo: [Nombre de otro módulo] ---
+// (Espacio reservado para el siguiente módulo) no borrar, solo escribir arriba de esto para que sepan donde poner los demás módulos
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -60,12 +80,25 @@ builder.Services.AddSwaggerGen(options =>
     options.EnableAnnotations();
 });
 
-// 6. MEDIATOR (CORTEX)
+
+// 6. REPOSITORIOS Y UNIDAD DE TRABAJO (AGREGAR AQUI LOS MODULOS DE REPOSITORIOS)
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+// BOUNDED CONTEXT: ATTENDANCE
+builder.Services.AddScoped<IAttendanceRecordRepository, AttendanceRecordRepository>();
+builder.Services.AddScoped<IAttendanceCommandService, AttendanceCommandService>();
+builder.Services.AddScoped<IAttendanceQueryService, AttendanceQueryService>();
+
+// BOUNDED CONTEXT: [Nombre del siguiente módulo]
+
+
+
+// 7. MEDIATOR (CORTEX)
 builder.Services.AddCortexMediator([typeof(Program)]);
 
 var app = builder.Build();
 
-// 7. MIGRACIONES AUTOMÁTICAS
+// 8. MIGRACIONES AUTOMÁTICAS
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
@@ -73,7 +106,7 @@ using (var scope = app.Services.CreateScope())
     context.Database.Migrate();
 }
 
-// 8. MIDDLEWARES (PIPELINE)
+// 9. MIDDLEWARES (PIPELINE)
 app.UseGlobalExceptionHandler();
 
 if (app.Environment.IsDevelopment())

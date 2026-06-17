@@ -4,6 +4,7 @@ using FlowboardAPI.Attendance.Domain.Model.Commands;
 using FlowboardAPI.Attendance.Domain.Repositories;
 using FlowboardAPI.Shared.Application.Model;
 using FlowboardAPI.Shared.Domain.Repositories;
+using FlowboardAPI.Shared.Resources.Errors;
 
 namespace FlowboardAPI.Attendance.Application.Internal.CommandServices;
 
@@ -29,7 +30,7 @@ public class AttendanceCommandService(
         }
         catch (Exception ex)
         {
-            return Result<AttendanceRecord>.Failure(new Error("Attendance.DatabaseError", ex.Message));
+            return Result<AttendanceRecord>.Failure((Enum)null!, ex.Message);
         }
     }
 }
