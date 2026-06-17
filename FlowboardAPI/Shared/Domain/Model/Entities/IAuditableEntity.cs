@@ -1,4 +1,4 @@
-namespace FlowboardAPI.Shared.Domain.Model;
+namespace FlowboardAPI.Shared.Domain.Model.Entities;
 
 public interface IAuditableEntity
 {
