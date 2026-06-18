@@ -30,6 +30,9 @@ using FlowboardAPI.Attendance.Application.Internal.QueryServices;
 // --- Módulo: Workspace ---
 using FlowboardAPI.Workspace.Domain.Repositories;
 using FlowboardAPI.Workspace.Infrastructure.Persistence.EFC.Repositories;
+using FlowboardAPI.Workspace.Application.CommandServices;
+using FlowboardAPI.Workspace.Application.Internal.CommandServices;
+using FlowboardAPI.Workspace.Application.QueryServices;
 using FlowboardAPI.Workspace.Application.Internal.QueryServices;
 // --- Módulo: [Nombre de otro módulo] ---
 // (Espacio reservado para el siguiente módulo) no borrar, solo escribir arriba de esto para que sepan donde poner los demás módulos
@@ -95,7 +98,8 @@ builder.Services.AddScoped<IAttendanceQueryService, AttendanceQueryService>();
 
 // BOUNDED CONTEXT: WORKSPACE
 builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
-builder.Services.AddScoped<EmployeeQueryService>();
+builder.Services.AddScoped<IEmployeeCommandService, EmployeeCommandService>();
+builder.Services.AddScoped<IEmployeeQueryService, EmployeeQueryService>();
 // BOUNDED CONTEXT: [Nombre del siguiente módulo]
 
 
