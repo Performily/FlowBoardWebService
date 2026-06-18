@@ -27,6 +27,10 @@ using FlowboardAPI.Attendance.Application.Internal.CommandServices;
 using FlowboardAPI.Attendance.Application.QueryServices;
 using FlowboardAPI.Attendance.Application.Internal.QueryServices;
 
+// --- Módulo: Workspace ---
+using FlowboardAPI.Workspace.Domain.Repositories;
+using FlowboardAPI.Workspace.Infrastructure.Persistence.EFC.Repositories;
+using FlowboardAPI.Workspace.Application.Internal.QueryServices;
 // --- Módulo: [Nombre de otro módulo] ---
 // (Espacio reservado para el siguiente módulo) no borrar, solo escribir arriba de esto para que sepan donde poner los demás módulos
 
@@ -89,8 +93,10 @@ builder.Services.AddScoped<IAttendanceRecordRepository, AttendanceRecordReposito
 builder.Services.AddScoped<IAttendanceCommandService, AttendanceCommandService>();
 builder.Services.AddScoped<IAttendanceQueryService, AttendanceQueryService>();
 
+// BOUNDED CONTEXT: WORKSPACE
+builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+builder.Services.AddScoped<EmployeeQueryService>();
 // BOUNDED CONTEXT: [Nombre del siguiente módulo]
-
 
 
 // 7. MEDIATOR (CORTEX)
