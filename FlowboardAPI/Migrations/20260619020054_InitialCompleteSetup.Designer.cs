@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FlowboardAPI.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260619013435_AddIamTablesToSharedDbContext")]
-    partial class AddIamTablesToSharedDbContext
+    [Migration("20260619020054_InitialCompleteSetup")]
+    partial class InitialCompleteSetup
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -126,6 +126,76 @@ namespace FlowboardAPI.Migrations
                         .HasName("pk_request_records");
 
                     b.ToTable("request_records");
+                });
+
+            modelBuilder.Entity("FlowboardAPI.Workspace.Domain.Model.Aggregates.Employee", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("Age")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Area")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("AvailableDays")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CivilStatus")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("ContractType")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTimeOffset?>("CreatedAt")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("EducationLevel")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Gender")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime>("HireDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("JobPosition")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTimeOffset?>("UpdatedAt")
+                        .HasColumnType("datetime");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("employees", (string)null);
                 });
 
             modelBuilder.Entity("FlowboardAPI.Attendance.Domain.Model.Aggregates.AttendanceRecord", b =>
@@ -329,6 +399,72 @@ namespace FlowboardAPI.Migrations
                         .IsRequired();
 
                     b.Navigation("TimeFrame")
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("FlowboardAPI.Workspace.Domain.Model.Aggregates.Employee", b =>
+                {
+                    b.OwnsOne("FlowboardAPI.Workspace.Domain.Model.ValueObjects.EmailAddress", "PersonalEmail", b1 =>
+                        {
+                            b1.Property<int>("EmployeeId")
+                                .HasColumnType("int");
+
+                            b1.Property<string>("Address")
+                                .IsRequired()
+                                .HasColumnType("longtext")
+                                .HasColumnName("personal_email");
+
+                            b1.HasKey("EmployeeId");
+
+                            b1.ToTable("employees");
+
+                            b1.WithOwner()
+                                .HasForeignKey("EmployeeId");
+                        });
+
+                    b.OwnsOne("FlowboardAPI.Workspace.Domain.Model.ValueObjects.EmailAddress", "WorkEmail", b1 =>
+                        {
+                            b1.Property<int>("EmployeeId")
+                                .HasColumnType("int");
+
+                            b1.Property<string>("Address")
+                                .IsRequired()
+                                .HasColumnType("longtext")
+                                .HasColumnName("work_email");
+
+                            b1.HasKey("EmployeeId");
+
+                            b1.ToTable("employees");
+
+                            b1.WithOwner()
+                                .HasForeignKey("EmployeeId");
+                        });
+
+                    b.OwnsOne("FlowboardAPI.Workspace.Domain.Model.ValueObjects.DocumentNumber", "DocumentNumber", b1 =>
+                        {
+                            b1.Property<int>("EmployeeId")
+                                .HasColumnType("int");
+
+                            b1.Property<string>("Number")
+                                .IsRequired()
+                                .HasColumnType("longtext")
+                                .HasColumnName("document_number");
+
+                            b1.HasKey("EmployeeId");
+
+                            b1.ToTable("employees");
+
+                            b1.WithOwner()
+                                .HasForeignKey("EmployeeId");
+                        });
+
+                    b.Navigation("DocumentNumber")
+                        .IsRequired();
+
+                    b.Navigation("PersonalEmail")
+                        .IsRequired();
+
+                    b.Navigation("WorkEmail")
                         .IsRequired();
                 });
 #pragma warning restore 612, 618

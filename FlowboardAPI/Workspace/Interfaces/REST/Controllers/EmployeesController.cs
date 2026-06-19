@@ -3,6 +3,7 @@ using FlowboardAPI.Workspace.Application.CommandServices;
 using FlowboardAPI.Workspace.Application.QueryServices;   
 using FlowboardAPI.Workspace.Interfaces.REST.Resources;
 using FlowboardAPI.Workspace.Interfaces.REST.Transform;
+using FlowboardAPI.Workspace.Domain.Model.Queries;
 namespace FlowboardAPI.Workspace.Interfaces.REST.Controllers;
 
 [ApiController]
@@ -31,11 +32,15 @@ public class EmployeesController : ControllerBase
         return StatusCode(201, employeeResource); 
     }
 
-    [HttpGet]
-    public async Task<IActionResult> GetAll()
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetById(int id)
     {
-        var employees = await _queryService.Handle();
-        var resources = employees.Select(EmployeeResourceFromEntityAssembler.ToResourceFromEntity);
-        return Ok(resources);
+        var getEmployeeByIdQuery = new GetEmployeeByIdQuery(id);
+        var employee = await _queryService.Handle(getEmployeeByIdQuery);
+        
+        if (employee == null) return NotFound();
+
+        var resource = EmployeeResourceFromEntityAssembler.ToResourceFromEntity(employee);
+        return Ok(resource);
     }
 }
