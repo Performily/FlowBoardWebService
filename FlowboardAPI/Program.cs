@@ -27,8 +27,14 @@ using FlowboardAPI.Attendance.Application.Internal.CommandServices;
 using FlowboardAPI.Attendance.Application.QueryServices;
 using FlowboardAPI.Attendance.Application.Internal.QueryServices;
 
-// --- Módulo: [Nombre de otro módulo] ---
-// (Espacio reservado para el siguiente módulo) no borrar, solo escribir arriba de esto para que sepan donde poner los demás módulos
+// --- Módulo: Payroll ---
+
+using FlowboardAPI.Payroll.Domain.Repositories;
+using FlowboardAPI.Payroll.Infrastructure.Persistence.EntityFrameworkCore.Repositories;
+using FlowboardAPI.Payroll.Application.CommandServices;
+using FlowboardAPI.Payroll.Application.Internal.CommandServices;
+using FlowboardAPI.Payroll.Application.QueryServices;
+using FlowboardAPI.Payroll.Application.Internal.QueryServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -90,6 +96,10 @@ builder.Services.AddScoped<IAttendanceCommandService, AttendanceCommandService>(
 builder.Services.AddScoped<IAttendanceQueryService, AttendanceQueryService>();
 
 // BOUNDED CONTEXT: [Nombre del siguiente módulo]
+// BOUNDED CONTEXT: PAYROLL
+builder.Services.AddScoped<IPaySlipRepository, PaySlipRepository>();
+builder.Services.AddScoped<IPaySlipCommandService, PaySlipCommandService>();
+builder.Services.AddScoped<IPaySlipQueryService, PaySlipQueryService>();
 
 
 

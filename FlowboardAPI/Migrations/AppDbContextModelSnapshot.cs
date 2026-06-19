@@ -53,6 +53,89 @@ namespace FlowboardAPI.Migrations
                     b.ToTable("attendance_record");
                 });
 
+            modelBuilder.Entity("FlowboardAPI.Payroll.Domain.Model.Aggregates.PaySlip", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("id");
+
+                    b.Property<string>("Area")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)")
+                        .HasColumnName("area");
+
+                    b.Property<string>("CollaboratorCode")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)")
+                        .HasColumnName("collaborator_code");
+
+                    b.Property<int>("CollaboratorId")
+                        .HasColumnType("int")
+                        .HasColumnName("collaborator_id");
+
+                    b.Property<string>("CollaboratorName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)")
+                        .HasColumnName("collaborator_name");
+
+                    b.Property<DateTimeOffset?>("CreatedAt")
+                        .HasColumnType("datetime")
+                        .HasColumnName("created_at");
+
+                    b.Property<decimal>("Deductions")
+                        .HasPrecision(10, 2)
+                        .HasColumnType("decimal(10,2)")
+                        .HasColumnName("deductions");
+
+                    b.Property<decimal>("GrossIncome")
+                        .HasPrecision(10, 2)
+                        .HasColumnType("decimal(10,2)")
+                        .HasColumnName("gross_income");
+
+                    b.Property<DateTime>("IssueDate")
+                        .HasColumnType("datetime(6)")
+                        .HasColumnName("issue_date");
+
+                    b.Property<DateTime?>("PaymentDate")
+                        .HasColumnType("datetime(6)")
+                        .HasColumnName("payment_date");
+
+                    b.Property<string>("PaymentType")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)")
+                        .HasColumnName("payment_type");
+
+                    b.Property<string>("PdfFileName")
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)")
+                        .HasColumnName("pdf_file_name");
+
+                    b.Property<string>("Period")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)")
+                        .HasColumnName("period");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("longtext")
+                        .HasColumnName("status");
+
+                    b.Property<DateTimeOffset?>("UpdatedAt")
+                        .HasColumnType("datetime")
+                        .HasColumnName("updated_at");
+
+                    b.HasKey("Id")
+                        .HasName("pk_pay_slip");
+
+                    b.ToTable("pay_slip");
+                });
+
             modelBuilder.Entity("FlowboardAPI.Attendance.Domain.Model.Aggregates.AttendanceRecord", b =>
                 {
                     b.OwnsOne("FlowboardAPI.Attendance.Domain.Model.ValueObjects.BiometricId", "BiometricId", b1 =>

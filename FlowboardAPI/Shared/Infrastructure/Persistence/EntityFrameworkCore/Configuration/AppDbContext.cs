@@ -1,6 +1,7 @@
 using FlowboardAPI.Attendance.Infrastructure.Persistence.EntityFrameworkCore.Configuration.Extensions; //del modulo de asistencia
 //using FlowboardAPI.Iam.Infrastructure.Persistence.EntityFrameworkCore.Configuration.Extensions;
 //using FlowboardAPI.Attendance.Infrastructure.Persistence.EntityFrameworkCore.Configuration.Extensions;
+using FlowboardAPI.Payroll.Infrastructure.Persistence.EntityFrameworkCore.Configuration.Extensions; // módulo de payroll
 
 using FlowboardAPI.Shared.Infrastructure.Persistence.EntityFrameworkCore.Configuration.Extensions;
 using FlowboardAPI.Shared.Infrastructure.Persistence.EntityFrameworkCore.Interceptors;
@@ -22,6 +23,8 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
 
         //builder.ApplyAttendanceConfiguration();
         builder.ApplyAttendanceConfiguration(); //modulo de aistencia
+        
+        builder.ApplyPayrollConfiguration();
         
         builder.UseSnakeCaseNamingConvention();
     }
