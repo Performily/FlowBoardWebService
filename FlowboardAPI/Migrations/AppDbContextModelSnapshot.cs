@@ -54,6 +54,7 @@ namespace FlowboardAPI.Migrations
                 });
 
             modelBuilder.Entity("FlowboardAPI.Requests.Domain.Model.Aggregates.RequestRecord", b =>
+            modelBuilder.Entity("FlowboardAPI.Iam.Domain.Model.Aggregates.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -86,7 +87,35 @@ namespace FlowboardAPI.Migrations
                         .HasName("pk_request_records");
 
                     b.ToTable("request_records");
-                });
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("varchar(150)")
+                        .HasColumnName("full_name");
+
+                    b.Property<string>("PasswordHash")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)")
+                        .HasColumnName("password_hash");
+
+                    b.Property<string>("Role")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)")
+                        .HasColumnName("role");
+
+                    b.Property<bool>("TemporaryPassword")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("tinyint(1)")
+                        .HasDefaultValue(false)
+                        .HasColumnName("temporary_password");
+
+                    b.HasKey("Id")
+                        .HasName("pk_users");
+
+                    b.ToTable("users", (string)null);
+                }));
 
             modelBuilder.Entity("FlowboardAPI.Attendance.Domain.Model.Aggregates.AttendanceRecord", b =>
                 {
@@ -119,6 +148,9 @@ namespace FlowboardAPI.Migrations
             modelBuilder.Entity("FlowboardAPI.Requests.Domain.Model.Aggregates.RequestRecord", b =>
                 {
                     b.OwnsOne("FlowboardAPI.Requests.Domain.Model.ValueObjects.Evidence", "Evidence", b1 =>
+            modelBuilder.Entity("FlowboardAPI.Iam.Domain.Model.Aggregates.User", b =>
+                {
+                    b.OwnsOne("FlowboardAPI.Iam.Domain.Model.ValueObjects.EmailAddress", "Email", b1 =>
                         {
                             b1.Property<int>("Id")
                                 .HasColumnType("int")
@@ -260,7 +292,24 @@ namespace FlowboardAPI.Migrations
                     b.Navigation("ReviewDetails")
                         .IsRequired();
 
-                    b.Navigation("TimeFrame")
+                    b.Navigation("TimeFrame");
+                            b1.Property<string>("Value")
+                                .IsRequired()
+                                .HasMaxLength(100)
+                                .HasColumnType("varchar(100)")
+                                .HasColumnName("value");
+
+                            b1.HasKey("Id")
+                                .HasName("pk_users");
+
+                            b1.ToTable("users");
+
+                            b1.WithOwner()
+                                .HasForeignKey("Id")
+                                .HasConstraintName("fk_users_users_id");
+                        }));
+
+                    b.Navigation("Email")
                         .IsRequired();
                 });
 #pragma warning restore 612, 618

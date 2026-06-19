@@ -34,6 +34,15 @@ using FlowboardAPI.Requests.Application.CommandServices;
 using FlowboardAPI.Requests.Application.Internal.CommandServices;
 using FlowboardAPI.Requests.Application.QueryServices;
 using FlowboardAPI.Requests.Application.Internal.QueryServices;
+// --- Módulo: IAM ---
+using FlowboardAPI.Iam.Application.CommandServices;
+using FlowboardAPI.Iam.Application.Internal.CommandServices;
+using FlowboardAPI.Iam.Application.OutboundServices;
+using FlowboardAPI.Iam.Infrastructure.Tokens;
+using FlowboardAPI.Iam.Application.QueryServices;
+using FlowboardAPI.Iam.Application.Internal.QueryServices;
+using FlowboardAPI.Iam.Domain.Repositories;
+using FlowboardAPI.Iam.Infrastructure.Persistence.EntityFrameworkCore.Repositories;
 
 // --- Módulo: [Nombre de otro módulo] ---
 // (Espacio reservado para el siguiente módulo) no borrar, solo escribir arriba de esto para que sepan donde poner los demás módulos
@@ -91,18 +100,22 @@ builder.Services.AddSwaggerGen(options =>
 
 // 6. REPOSITORIOS Y UNIDAD DE TRABAJO (AGREGAR AQUI LOS MODULOS DE REPOSITORIOS)
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 // BOUNDED CONTEXT: ATTENDANCE
 builder.Services.AddScoped<IAttendanceRecordRepository, AttendanceRecordRepository>();
 builder.Services.AddScoped<IAttendanceCommandService, AttendanceCommandService>();
 builder.Services.AddScoped<IAttendanceQueryService, AttendanceQueryService>();
 
+// BOUNDED CONTEXT: IAM
+builder.Services.AddScoped<ITokenService, TokenService>();
+builder.Services.AddScoped<IAuthenticationCommandService, AuthenticationCommandService>();
+builder.Services.AddScoped<IUserQueryService, UserQueryService>();
 // BOUNDED CONTEXT: [Nombre del siguiente módulo]
 // BOUNDED CONTEXT: REQUESTS
 builder.Services.AddScoped<IRequestRecordRepository, RequestRecordRepository>();
 builder.Services.AddScoped<IRequestCommandService, RequestCommandService>();
 builder.Services.AddScoped<IRequestQueryService, RequestQueryService>();
-
 
 // 7. MEDIATOR (CORTEX)
 builder.Services.AddCortexMediator([typeof(Program)]);

@@ -1,6 +1,7 @@
 using FlowboardAPI.Attendance.Infrastructure.Persistence.EntityFrameworkCore.Configuration.Extensions; //del modulo de asistencia
 
 //using FlowboardAPI.Iam.Infrastructure.Persistence.EntityFrameworkCore.Configuration.Extensions;
+using FlowboardAPI.Iam.Infrastructure.Persistence.EntityFrameworkCore.Configuration.Extensions;
 //using FlowboardAPI.Attendance.Infrastructure.Persistence.EntityFrameworkCore.Configuration.Extensions;
 using FlowboardAPI.Requests.Infrastructure.Persistence.EntityFrameworkCore.Configuration.Extensions;
 using FlowboardAPI.Requests.Domain.Model.Aggregates;
@@ -26,6 +27,9 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
         //builder.ApplyAttendanceConfiguration();
         builder.ApplyAttendanceConfiguration(); //modulo de aistencia
         builder.ApplyRequestConfiguration();
+        builder.ApplyIamConfiguration();        //modulo de iam
         builder.UseSnakeCaseNamingConvention();
     }
+
+    
 }
