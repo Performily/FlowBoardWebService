@@ -1,5 +1,5 @@
-﻿using FlowboardAPI.Iam.Domain.model.Commands;
-using FlowboardAPI.Iam.Domain.model.Aggregates;
+﻿using FlowboardAPI.Iam.Domain.Model.Commands;
+using FlowboardAPI.Iam.Domain.Model.Aggregates;
 using FlowboardAPI.Shared.Application.Model;
 
 namespace FlowboardAPI.Iam.Application.CommandServices;

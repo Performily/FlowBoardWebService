@@ -1,4 +1,4 @@
-﻿namespace FlowboardAPI.Iam.Domain.model.ValueObjects;
+﻿namespace FlowboardAPI.Iam.Domain.Model.ValueObjects;
 public record EmailAddress
 {
     public string Value { get; }

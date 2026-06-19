@@ -1,8 +1,8 @@
 ﻿using FlowboardAPI.Iam.Application.CommandServices; // Ajustado a la estructura nueva
 using FlowboardAPI.Iam.Application.OutboundServices;
-using FlowboardAPI.Iam.Domain.model.Aggregates;
-using FlowboardAPI.Iam.Domain.model.Commands;
-using FlowboardAPI.Iam.Domain.model.Errors;
+using FlowboardAPI.Iam.Domain.Model.Aggregates;
+using FlowboardAPI.Iam.Domain.Model.Commands;
+using FlowboardAPI.Iam.Domain.Model.Errors;
 using FlowboardAPI.Shared.Application.Model; // El Shared oficial del equipo
 
 namespace FlowboardAPI.Iam.Application.Internal.CommandServices;

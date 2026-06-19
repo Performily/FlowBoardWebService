@@ -11,7 +11,13 @@ public class User
     public string Role { get; private set; } // "RRHH" o "Colaborador"
     public bool TemporaryPassword { get; private set; }
 
-    protected User() {} // Requerido por EF Core
+    protected User() 
+    {
+        FullName = null!;
+        Email = null!;
+        PasswordHash = null!;
+        Role = null!;
+    } // Requerido por EF Core
 
     public User(string fullName, EmailAddress email, string passwordHash, string role)
     {

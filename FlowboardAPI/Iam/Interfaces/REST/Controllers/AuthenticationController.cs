@@ -3,7 +3,7 @@ using Swashbuckle.AspNetCore.Annotations;
 using FlowboardAPI.Iam.Application.CommandServices;
 using FlowboardAPI.Iam.Interfaces.REST.Resources;
 using FlowboardAPI.Iam.Interfaces.REST.Transform;
-using FlowboardAPI.Iam.Domain.model.Errors;
+using FlowboardAPI.Iam.Domain.Model.Errors;
 
 namespace FlowboardAPI.Iam.Interfaces.REST.Controllers;
 
