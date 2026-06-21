@@ -7,7 +7,7 @@ using FlowboardAPI.Shared.Resources;
 using Cortex.Mediator.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
-using Microsoft.OpenApi; 
+using Microsoft.OpenApi.Models;
 
 using ProblemDetailsFactory = FlowboardAPI.Shared.Interfaces.Rest.ProblemDetails.ProblemDetailsFactory;
 
