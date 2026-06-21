@@ -6,4 +6,5 @@ public interface IEmployeeQueryService
 {
     Task<IEnumerable<Employee>> Handle();
     Task<Employee?> Handle(GetEmployeeByIdQuery query);
+    Task<IEnumerable<Employee>> Handle(GetAllEmployeesQuery query);
 }

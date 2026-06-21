@@ -24,4 +24,8 @@ public class EmployeeQueryService : IEmployeeQueryService
     {
         return await _employeeRepository.FindByIdAsync(query.Id);
     }
+    public async Task<IEnumerable<Employee>> Handle(GetAllEmployeesQuery query)
+    {
+        return await _employeeRepository.ListAsync(); 
+    }
 }
