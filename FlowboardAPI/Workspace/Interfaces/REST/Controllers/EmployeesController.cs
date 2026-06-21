@@ -44,6 +44,7 @@ public class EmployeesController : ControllerBase
         return Ok(resource);
     }
 
+    [HttpGet]
     public async Task<IActionResult> GetAll()
     {
         var getAllEmployeesQuery = new GetAllEmployeesQuery();
