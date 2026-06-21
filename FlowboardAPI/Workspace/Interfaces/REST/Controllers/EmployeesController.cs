@@ -43,4 +43,14 @@ public class EmployeesController : ControllerBase
         var resource = EmployeeResourceFromEntityAssembler.ToResourceFromEntity(employee);
         return Ok(resource);
     }
+
+    public async Task<IActionResult> GetAll()
+    {
+        var getAllEmployeesQuery = new GetAllEmployeesQuery();
+        var employees = await _queryService.Handle(getAllEmployeesQuery);
+        
+        var resources = employees.Select(EmployeeResourceFromEntityAssembler.ToResourceFromEntity);
+        
+        return Ok(resources);
+    }
 }
