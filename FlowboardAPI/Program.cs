@@ -145,7 +145,18 @@ builder.Services.AddScoped<IRequestQueryService, RequestQueryService>();
 // 7. MEDIATOR (CORTEX)
 builder.Services.AddCortexMediator([typeof(Program)]);
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowVueApp",
+        policy => policy
+            .WithOrigins("http://localhost:5173", "http://localhost:8080") // Puertos comunes de Vue
+            .AllowAnyMethod()
+            .AllowAnyHeader());
+});
+
 var app = builder.Build();
+
+
 
 // 8. MIGRACIONES AUTOMÁTICAS
 using (var scope = app.Services.CreateScope())
@@ -165,6 +176,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseCors("AllowAllPolicy");
+app.UseCors("AllowVueApp");
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();

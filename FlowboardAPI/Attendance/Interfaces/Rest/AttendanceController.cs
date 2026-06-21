@@ -22,7 +22,19 @@ public class AttendanceController(
     IStringLocalizer<ErrorMessages> errorLocalizer, 
     ProblemDetailsFactory problemDetailsFactory) 
     : ControllerBase
-    {   
+{   
+   
+    [HttpGet]
+    [SwaggerOperation("Get All Attendance Summaries", "Get a daily summary of all attendance records.", OperationId = "GetAllAttendanceSummaries")]
+    [SwaggerResponse(200, "The attendance summaries were found.", typeof(IEnumerable<AttendanceSummaryResource>))]
+    public async Task<IActionResult> GetAllAttendances(CancellationToken cancellationToken)
+    {
+        var query = new GetAllAttendanceSummariesQuery();
+        var summaries = await attendanceQueryService.Handle(query, cancellationToken);
+
+        return Ok(summaries);
+    }
+
     [HttpGet("{attendanceId:int}")]
     [SwaggerOperation("Get Attendance Record by Id", "Get an attendance record by its unique identifier.", OperationId = "GetAttendanceRecordById")]
     [SwaggerResponse(200, "The attendance record was found.", typeof(AttendanceRecordResource))]
