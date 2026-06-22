@@ -7,6 +7,12 @@ public static class EmployeeResourceFromEntityAssembler
 {
     public static EmployeeResource ToResourceFromEntity(Employee entity)
     {
-        return new EmployeeResource(entity.Id, entity.Name, entity.Code, entity.WorkEmail.Address);
+        return new EmployeeResource(entity.Id, entity.Name, entity.Code, entity.WorkEmail.Address
+        , entity.Address,
+            entity.Age,
+            entity.Area,
+            entity.JobPosition,
+            entity.ContractType,
+            entity.Status);
     }
 }
