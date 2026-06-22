@@ -19,7 +19,7 @@ public static class ModelBuilderExtensions
 
         builder.Entity<AttendanceRecord>().OwnsOne(a => a.BiometricId, b =>
         {
-            b.WithOwner();
+            b.WithOwner().HasForeignKey("Id");
             b.Property(p => p.Value).HasColumnName("BiometricId").IsRequired().HasMaxLength(50);
         });
     }
